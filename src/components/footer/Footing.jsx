@@ -5,7 +5,7 @@ function Footing() {
   const year = date.getFullYear();
   return (
     <footer>
-      <p>Copyright {year}</p>
+      <p>Copyright© {year}</p>
     </footer>
   );
 }
