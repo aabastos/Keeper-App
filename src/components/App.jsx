@@ -8,7 +8,9 @@ function App() {
   return (
     <div>
       <Heading />
-      <Note title="Note title" content="Note content" />
+      {notes.map((note) => (
+        <Note key={note.key} title={note.title} content={note.content} />
+      ))}
       <Footing />
     </div>
   );
