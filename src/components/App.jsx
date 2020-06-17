@@ -8,23 +8,26 @@ import Note from "./note/Note";
 function App() {
   const [notes, setNotes] = useState([]);
 
-  function addNote() {
+  function addNote(event, title, content) {
     const newNote = {
-      id: new uuid(),
+      id: uuid(),
+      title: title,
+      content: content,
     };
 
-    console.log(newNote);
     setNotes((prevNotes) => {
-      return [...prevNotes];
+      return [...prevNotes, newNote];
     });
+
+    event.preventDefault();
   }
 
   return (
     <div>
       <Heading />
-      <Create />
+      <Create addNote={addNote} />
       {notes.map((note) => (
-        <Note key={note.key} title={note.title} content={note.content} />
+        <Note key={note.id} title={note.title} content={note.content} />
       ))}
       <Footing />
     </div>
