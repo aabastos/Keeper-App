@@ -22,12 +22,27 @@ function App() {
     event.preventDefault();
   }
 
+  function deleteNote(id) {
+    console.log(id);
+    setNotes((prevNotes) => {
+      return prevNotes.filter((note) => {
+        return note.id !== id;
+      });
+    });
+  }
+
   return (
     <div>
       <Heading />
       <Create addNote={addNote} />
       {notes.map((note) => (
-        <Note key={note.id} title={note.title} content={note.content} />
+        <Note
+          key={note.id}
+          id={note.id}
+          title={note.title}
+          content={note.content}
+          deleteNote={deleteNote}
+        />
       ))}
       <Footing />
     </div>
